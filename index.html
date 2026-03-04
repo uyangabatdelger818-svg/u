@@ -31,43 +31,48 @@ transition:transform 0.08s ease;
 /* HERO */
 .hero{
 height:100vh;
+position:relative;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
-position:relative;
 overflow:hidden;
-text-align:center;
 }
 
-/* GLITCH */
+/* VERTICAL MONGOLIAN GLITCH */
 .glitch{
-font-size:80px;
-position:relative;
-animation:glitch 1.2s infinite;
+position:absolute;
+right:10%;
+top:50%;
+transform:translateY(-50%);
+font-size:65px;
+writing-mode:vertical-rl;
+text-orientation:mixed;
+letter-spacing:6px;
+animation:glitch 1.5s infinite;
 }
 
 .glitch::before,
 .glitch::after{
 content:attr(data-text);
 position:absolute;
+top:0;
 left:0;
 }
 
 .glitch::before{
 color:red;
-animation:glitchTop 1.2s infinite;
+animation:glitchTop 1.5s infinite;
 }
 
 .glitch::after{
 color:blue;
-animation:glitchBottom 1.2s infinite;
+animation:glitchBottom 1.5s infinite;
 }
 
 @keyframes glitch{
-0%{text-shadow:2px 2px red;}
-50%{text-shadow:-2px -2px blue;}
-100%{text-shadow:2px -2px red;}
+0%{transform:translateY(-50%) translate(0);}
+50%{transform:translateY(-50%) translate(2px,-2px);}
+100%{transform:translateY(-50%) translate(0);}
 }
 
 @keyframes glitchTop{
@@ -82,14 +87,24 @@ animation:glitchBottom 1.2s infinite;
 100%{transform:translate(0);}
 }
 
+/* TAGLINE */
+.tagline{
+position:absolute;
+bottom:15%;
+left:50%;
+transform:translateX(-50%);
+font-size:14px;
+opacity:0.7;
+letter-spacing:2px;
+}
+
 /* PROFILE IMAGE */
 .profile{
-width:220px;
-margin-top:30px;
+width:230px;
 border-radius:20px;
 filter:grayscale(100%);
-transition:0.5s;
-box-shadow:0 0 40px rgba(255,255,255,0.1);
+transition:0.6s;
+box-shadow:0 0 60px rgba(255,255,255,0.08);
 }
 
 .profile:hover{
@@ -101,12 +116,12 @@ transform:scale(1.05);
 .doodle{
 position:absolute;
 width:90px;
-opacity:0.7;
+opacity:0.6;
 transition:transform 0.2s;
 }
 
 #d1{top:15%;left:10%;}
-#d2{bottom:20%;right:15%;}
+#d2{bottom:20%;right:20%;}
 #d3{top:70%;left:25%;}
 
 /* FILM GRAIN */
@@ -124,7 +139,7 @@ pointer-events:none;
 position:absolute;
 width:100%;
 height:100%;
-background:radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 40%);
+background:radial-gradient(circle at center, rgba(255,255,255,0.07), transparent 45%);
 pointer-events:none;
 }
 
@@ -136,6 +151,7 @@ text-align:center;
 opacity:0;
 transform:translateY(100px);
 transition:1.2s ease;
+background:#0d0d0d;
 }
 
 .about.show{
@@ -146,6 +162,7 @@ transform:translateY(0);
 .about h2{
 font-size:40px;
 margin-bottom:20px;
+letter-spacing:2px;
 }
 
 .about p{
@@ -154,6 +171,7 @@ margin:auto;
 opacity:0.8;
 line-height:1.8;
 }
+
 </style>
 </head>
 
@@ -166,10 +184,13 @@ line-height:1.8;
 <div class="film-grain"></div>
 <div class="spotlight"></div>
 
-<h1 class="glitch" data-text="ᠤᠶᠠᠩᠭ᠎ᠠ ᠪᠠᠲᠤᠳᠡᠯᢉᠡᠷ">ᠤᠶᠠᠩᠭ᠎ᠠ ᠪᠠᠲᠤᠳᠡᠯᢉᠡᠷ</h1>
-<p>obsessed with aesthetic & midnight thoughts</p>
+<h1 class="glitch" data-text="ᠤᠶᠠᠩᠭ᠎ᠠ ᠪᠠᠲᠤᠳᠡᠯᢉᠡᠷ">
+ᠤᠶᠠᠩᠭ᠎ᠠ ᠪᠠᠲᠤᠳᠡᠯᢉᠡᠷ
+</h1>
 
 <img src="your-photo.png" class="profile">
+
+<p class="tagline">obsessed with aesthetic & midnight thoughts</p>
 
 <img src="star.png" class="doodle" id="d1">
 <img src="scribble.png" class="doodle" id="d2">
