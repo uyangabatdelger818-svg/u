@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Uyanga.exe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  background: #f4f4f4;
+  font-family: 'Inter', sans-serif;
+  color: #111;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  opacity: 0.6;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.playlist ul {
+  padding-left: 20px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: black;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Uyanga</h1>
+<div class="subtitle">digital scrapbook · version 2.0</div>
+
+<div class="card">
+  <h2>About Me</h2>
+  <p>
+  Hi. I'm Uyanga.  
+  I like aesthetics, music, digital stuff and random ideas at 2AM.  
+  This website is basically my online diary.
+  </p>
+</div>
+
+<div class="card playlist">
+  <h2>What's On My Playlist?</h2>
+  <ul>
+    <li>Song 1 – Artist</li>
+    <li>Song 2 – Artist</li>
+    <li>Song 3 – Artist</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Things I Love</h2>
+  <p>☕ Coffee · 🎧 Music · 📷 Photos · 🌙 Night talks</p>
+</div>
+
+<div class="card">
+  <h2>Photo Dump</h2>
+  <div class="gallery">
+    <img src="https://source.unsplash.com/400x400/?aesthetic" />
+    <img src="https://source.unsplash.com/400x400/?film" />
+    <img src="https://source.unsplash.com/400x400/?girl" />
+  </div>
+</div>
+
+<div class="card">
+  <h2>Random Thought</h2>
+  <p id="thought">Click below for a random thought.</p>
+  <button onclick="newThought()">New Thought</button>
+</div>
+
+<div class="footer">
+  © 2026 Uyanga.exe
+</div>
+
+</div>
+
+<script>
+function newThought() {
+  const thoughts = [
+    "Everything is temporary.",
+    "Soft but powerful.",
+    "Still becoming.",
+    "Romanticizing my own life.",
+    "Main character energy."
+  ];
+  const random = thoughts[Math.floor(Math.random() * thoughts.length)];
+  document.getElementById("thought").innerText = random;
+}
+</script>
+
+</body>
+</html>
