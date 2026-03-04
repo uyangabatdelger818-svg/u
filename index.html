@@ -3,156 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uyanga.exe</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Uyanga Portfolio</title>
 
 <style>
-
-html {
-  scroll-behavior: smooth;
+body{
+margin:0;
+background:#0b0b0b;
+color:white;
+font-family:serif;
+overflow-x:hidden;
+cursor:none;
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: white;
-  background: linear-gradient(-45deg, #1e1e1e, #2a2a2a, #1c1c1c, #252525);
-  background-size: 400% 400%;
-  animation: gradientMove 18s ease infinite;
+/* CUSTOM CURSOR */
+.custom-cursor{
+width:20px;
+height:20px;
+border:1px solid white;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:9999;
+transition:transform 0.08s ease;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+overflow:hidden;
+text-align:center;
 }
 
-.container {
-  max-width: 700px;
-  margin: auto;
-  padding: 60px 20px;
+/* GLITCH */
+.glitch{
+font-size:80px;
+position:relative;
+animation:glitch 1.2s infinite;
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  margin-bottom: 5px;
-  text-align: center;
+.glitch::before,
+.glitch::after{
+content:attr(data-text);
+position:absolute;
+left:0;
 }
 
-.subtitle {
-  text-align: center;
-  opacity: 0.6;
-  margin-bottom: 50px;
+.glitch::before{
+color:red;
+animation:glitchTop 1.2s infinite;
 }
 
-.section {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 20px;
-  transition: all 0.4s ease;
-  opacity: 0;
-  transform: translateY(40px);
+.glitch::after{
+color:blue;
+animation:glitchBottom 1.2s infinite;
 }
 
-.section:hover {
-  transform: translateY(-6px) scale(1.02);
-  background: rgba(255,255,255,0.08);
+@keyframes glitch{
+0%{text-shadow:2px 2px red;}
+50%{text-shadow:-2px -2px blue;}
+100%{text-shadow:2px -2px red;}
 }
 
-button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 20px;
-  background: white;
-  color: black;
-  cursor: pointer;
-  transition: 0.3s ease;
+@keyframes glitchTop{
+0%{transform:translate(0);}
+50%{transform:translate(-3px,-3px);}
+100%{transform:translate(0);}
 }
 
-button:hover {
-  transform: scale(1.05);
+@keyframes glitchBottom{
+0%{transform:translate(0);}
+50%{transform:translate(3px,3px);}
+100%{transform:translate(0);}
 }
 
-footer {
-  text-align: center;
-  opacity: 0.5;
-  margin-top: 40px;
-  font-size: 14px;
+/* PROFILE IMAGE */
+.profile{
+width:220px;
+margin-top:30px;
+border-radius:20px;
+filter:grayscale(100%);
+transition:0.5s;
+box-shadow:0 0 40px rgba(255,255,255,0.1);
 }
 
+.profile:hover{
+filter:grayscale(0%);
+transform:scale(1.05);
+}
+
+/* DOODLES */
+.doodle{
+position:absolute;
+width:90px;
+opacity:0.7;
+transition:transform 0.2s;
+}
+
+#d1{top:15%;left:10%;}
+#d2{bottom:20%;right:15%;}
+#d3{top:70%;left:25%;}
+
+/* FILM GRAIN */
+.film-grain{
+position:absolute;
+width:100%;
+height:100%;
+background:url("https://grainy-gradients.vercel.app/noise.svg");
+opacity:0.05;
+pointer-events:none;
+}
+
+/* SPOTLIGHT */
+.spotlight{
+position:absolute;
+width:100%;
+height:100%;
+background:radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 40%);
+pointer-events:none;
+}
+
+/* SECOND SECTION */
+.about{
+min-height:100vh;
+padding:150px 20px;
+text-align:center;
+opacity:0;
+transform:translateY(100px);
+transition:1.2s ease;
+}
+
+.about.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.about h2{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.about p{
+max-width:600px;
+margin:auto;
+opacity:0.8;
+line-height:1.8;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="custom-cursor"></div>
 
-<h1>Uyanga</h1>
-<div class="subtitle">дижитал тэмдэглэл · version 3.0</div>
+<section class="hero">
 
-<div class="section">
-  <h3>Миний тухай</h3>
-  <p>Сайн уу, би Уянга. Аестетик, хөгжим, дижитал ертөнц, шөнийн 2 цагийн бодлуудад дуртай. Энэ бол миний онлайн өдрийн тэмдэглэл.</p>
-</div>
+<div class="film-grain"></div>
+<div class="spotlight"></div>
 
-<div class="section">
-  <h3>Сүүлийн үед сонсож байгаа</h3>
-  <ul>
-    <li>🎵 Дуртай дуу 1</li>
-    <li>🎵 Дуртай дуу 2</li>
-    <li>🎵 Дуртай дуу 3</li>
-  </ul>
-</div>
+<h1 class="glitch" data-text="Uyanga">Uyanga</h1>
+<p>obsessed with aesthetic & midnight thoughts</p>
 
-<div class="section">
-  <h3>Миний дуртай зүйлс</h3>
-  ☕ Кофе · 🎧 Хөгжим · 📷 Зураг · 🌙 Оройн яриа
-</div>
+<img src="your-photo.png" class="profile">
 
-<div class="section">
-  <h3>Санамсаргүй бодол</h3>
-  <p id="thought">Доорх товчийг дараад нэг бодол унш.</p>
-  <button onclick="newThought()">Шинэ бодол</button>
-</div>
+<img src="star.png" class="doodle" id="d1">
+<img src="scribble.png" class="doodle" id="d2">
+<img src="heart.png" class="doodle" id="d3">
 
-<footer>
-  © 2026 Uyanga.exe
-</footer>
+</section>
 
-</div>
+<section class="about">
+<h2>Миний тухай</h2>
+<p>
+Сайн уу, би Уянга. Аестетик, хөгжим, дизайн, шөнийн 2 цагийн бодлуудад дуртай.
+Энэ бол миний дижитал ертөнц — дурсамж, мэдрэмж, бүтээлүүдийн цуглуулга.
+</p>
+</section>
 
 <script>
 
-const sections = document.querySelectorAll('.section');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.style.opacity = 1;
-      entry.target.style.transform = "translateY(0)";
-    }
-  });
-}, { threshold: 0.2 });
-
-sections.forEach(section => {
-  observer.observe(section);
+/* CUSTOM CURSOR */
+const cursor=document.querySelector(".custom-cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
 });
 
-function newThought(){
-  const thoughts = [
-    "Зарим бодол шөнийн 2 цагт л үнэн байдаг.",
-    "Аестетик бол зүгээр нэг стиль биш, мэдрэмж.",
-    "Зарим дурсамж дуу шиг байдаг.",
-    "Чимээгүй амьдрал > чанга амьдрал.",
-    "Бүх зүйл түр зуурынх."
-  ];
-  const random = thoughts[Math.floor(Math.random() * thoughts.length)];
-  document.getElementById("thought").innerText = random;
+/* DOODLE PARALLAX */
+document.addEventListener("mousemove",e=>{
+document.querySelectorAll(".doodle").forEach(doodle=>{
+let speed=0.02;
+let x=(window.innerWidth - e.pageX * speed);
+let y=(window.innerHeight - e.pageY * speed);
+doodle.style.transform=`translate(${x/20}px, ${y/20}px)`;
+});
+});
+
+/* CINEMATIC SCROLL */
+const about=document.querySelector(".about");
+window.addEventListener("scroll",()=>{
+const trigger=window.innerHeight*0.8;
+const top=about.getBoundingClientRect().top;
+if(top<trigger){
+about.classList.add("show");
 }
+});
 
 </script>
 
